@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyTasks"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-
+        Title="MyTasks" Height="340" Width="600"
+        Style="{DynamicResource WindowStyle}"
+        >
+        
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -15,6 +17,20 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
-        <Button Width="40" Height="40" Style="{DynamicResource ButtonStyle}"></Button>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50">
+            </RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="130"></ColumnDefinition>
+            <ColumnDefinition Width="130"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock x:Name="TimestampBlock" Style="{DynamicResource TimestampBlock}"></TextBlock>
+
+        <Button Grid.Column="1" Style="{DynamicResource ButtonStyle}" Content="Создать задачу" />
+        <Button Grid.Column="2" Style="{DynamicResource ButtonStyle}" Content="Изменить задачу" />
     </Grid>
 </Window>

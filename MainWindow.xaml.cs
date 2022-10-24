@@ -25,11 +25,11 @@ namespace MyTasks
         {
             InitializeComponent();
 
-            GetCurrentTime();
+            SetCurrentTime();
 
         }
 
-        private void GetCurrentTime()
+        private void SetCurrentTime()
         {
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);

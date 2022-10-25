@@ -12,6 +12,10 @@
         <Setter Property="Padding" Value="10" />
     </Style>
 
+    <Style TargetType="TextBlock">
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
     <Style x:Key="TimestampBlock" TargetType="TextBlock">
         <Setter Property="MaxWidth" Value="150" />
         <Setter Property="MaxHeight" Value="50" />

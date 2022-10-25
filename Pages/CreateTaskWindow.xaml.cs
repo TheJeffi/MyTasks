@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyTasks.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,8 +25,6 @@ namespace MyTasks.Pages
             InitializeComponent();
 
             CreateTaskButton.Click += Create_Task;
-
-            GetTaskData();
         }
 
         private void Create_Task(object sender, RoutedEventArgs e)
@@ -35,12 +34,25 @@ namespace MyTasks.Pages
 
         private void GetTaskData()
         {
-            var taskName = TaskName.Text.Trim();
-            var taskStartDate = TaskCreateDate.Text.Trim();
-            var taskEndDate = TaskEndDate.Text.Trim();
-            var taskPuprose = TaskPurpose.Text.Trim();
+            //TODO : Реализовать алгоритм получения данных из формы
+        }
 
-            MessageBox.Show($"{taskName}, {taskStartDate}, {taskEndDate}, {taskPuprose}");
+        private void CloseButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Close();
+        }
+
+        private void MinButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void ToolBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                DragMove();
+            }
         }
     }
 }

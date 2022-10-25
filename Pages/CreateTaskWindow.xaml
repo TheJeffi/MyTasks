@@ -1,0 +1,55 @@
+﻿<Window x:Class="MyTasks.Pages.CreateTaskWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyTasks.Pages"
+        mc:Ignorable="d"
+        Title="CreateTaskWindow" Height="340" Width="240"
+        Style="{DynamicResource WindowStyle}" WindowStartupLocation="CenterScreen"
+        WindowStyle="ToolWindow"
+        ResizeMode="CanMinimize" WindowState="Normal">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="54*"/>
+            <RowDefinition Height="54*"></RowDefinition>
+            <RowDefinition Height="54*"></RowDefinition>
+            <RowDefinition Height="54*"></RowDefinition>
+            <RowDefinition Height="54*"></RowDefinition>
+            <RowDefinition Height="54*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock TextAlignment="Center" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center">Создать задачу</TextBlock>
+
+        <StackPanel Margin="5" Grid.Row="1">
+            <TextBlock>Название задачи</TextBlock>
+            <TextBox x:Name="TaskName" />
+        </StackPanel>
+
+        <StackPanel Margin="5" Grid.Row="2">
+            <TextBlock>Дата создания задачи</TextBlock>
+            <DatePicker x:Name="TaskCreateDate" />
+        </StackPanel>
+
+        <StackPanel Margin="5" Grid.Row="3">
+            <TextBlock>Дата завершения задачи</TextBlock>
+            <DatePicker x:Name="TaskEndDate" />
+        </StackPanel>
+
+        <StackPanel Margin="5" Grid.Row="4">
+            <TextBlock>Цель задачи</TextBlock>
+            <TextBox x:Name="TaskPurpose"/>
+        </StackPanel>
+
+        <Button x:Name="CreateTaskButton" Style="{DynamicResource ButtonStyle}" />
+    </Grid>
+</Window>

@@ -7,6 +7,7 @@
         <Setter Property="Background" Value="#FF9B73"/>
         <Setter Property="Foreground" Value="White" />
         <Setter Property="TextBlock.FontSize" Value="12" />
+        <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Margin" Value="5" />
         <Setter Property="TextBlock.FontFamily" Value="Lexend Mega" />
         <Setter Property="Padding" Value="10" />
@@ -17,8 +18,8 @@
     </Style>
 
     <Style x:Key="TimestampBlock" TargetType="TextBlock">
-        <Setter Property="MaxWidth" Value="150" />
-        <Setter Property="MaxHeight" Value="50" />
+        <Setter Property="Width" Value="150" />
+        <Setter Property="Height" Value="50" />
         <Setter Property="Background" Value="#989191" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="TextBlock.FontSize" Value="12" />
@@ -32,6 +33,8 @@
     <Style x:Key="WindowStyle" TargetType="Window">
         <Setter Property="Padding" Value="5" />
         <Setter Property="Background" Value="#3F3F3F" />
+        <Setter Property="BorderBrush" Value="White" />
+        <Setter Property="BorderThickness" Value="0.5" />
     </Style>
 
 </ResourceDictionary>

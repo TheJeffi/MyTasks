@@ -55,5 +55,23 @@ namespace MyTasks
         {
             TimestampBlock.Text = DateTime.Now.ToString("g");
         }
+
+        private void CloseButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Close();
+        }
+
+        private void MinButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void ToolBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                DragMove();
+            }
+        }
     }
 }

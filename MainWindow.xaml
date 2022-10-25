@@ -6,9 +6,10 @@
         xmlns:local="clr-namespace:MyTasks"
         mc:Ignorable="d"
         Title="MyTasks" Height="340" Width="600"
-        Style="{DynamicResource WindowStyle}"
+        ResizeMode="NoResize" WindowStyle="None"
+        Style="{DynamicResource WindowStyle}" WindowStartupLocation="CenterScreen"
         >
-        
+
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -16,21 +17,57 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid>
+    <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="50">
-            </RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="270"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="130"></ColumnDefinition>
-            <ColumnDefinition Width="130"></ColumnDefinition>
+            <ColumnDefinition />
+            <ColumnDefinition Width="130" />
+            <ColumnDefinition Width="130" />
         </Grid.ColumnDefinitions>
+        <Grid x:Name="ToolBar"  Background="Transparent" Grid.ColumnSpan="3" MouseDown="ToolBar_MouseDown">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Image x:Name="MinButton" Height="20" Width="20" MouseDown="MinButton_MouseDown">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="/Resources/Source/Cвернуть неактивный.png" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsMouseOver, ElementName=MinButton}" Value="true">
+                                    <Setter Property="Source" Value="/Resources/Source/Cвернуть активный.png" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                    <Image.Effect>
+                        <BlurEffect Radius="1"/>
+                    </Image.Effect>
+                </Image>
+                <Image x:Name="CloseButton" Height="20" Width="20" MouseDown="CloseButton_MouseDown">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="/Resources/Source/Закрыть неактивный.png" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsMouseOver, ElementName=CloseButton}" Value="true">
+                                    <Setter Property="Source" Value="/Resources/Source/Закрыть активный.png" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                    <Image.Effect>
+                        <BlurEffect Radius="1"/>
+                    </Image.Effect>
+                </Image>
+            </StackPanel>
+        </Grid>
+        <TextBlock x:Name="TimestampBlock" Grid.Row="1" Style="{DynamicResource TimestampBlock}"></TextBlock>
+        <Button x:Name="CreateTaskButton" Grid.Row="1" Grid.Column="1" Style="{DynamicResource ButtonStyle}" Content="Создать задачу" />
+        <Button x:Name="ChangeTaskButton" Grid.Row="1" Grid.Column="2" Style="{DynamicResource ButtonStyle}" Content="Изменить задачу" />
 
-        <TextBlock x:Name="TimestampBlock" Style="{DynamicResource TimestampBlock}"></TextBlock>
-
-        <Button x:Name="CreateTaskButton" Grid.Column="1" Style="{DynamicResource ButtonStyle}" Content="Создать задачу" />
-        <Button x:Name="ChangeTaskButton" Grid.Column="2" Style="{DynamicResource ButtonStyle}" Content="Изменить задачу" />
+        <Grid x:Name="TasksGrid" Grid.Row="2" Grid.ColumnSpan="3">
+            
+        </Grid>
     </Grid>
 </Window>

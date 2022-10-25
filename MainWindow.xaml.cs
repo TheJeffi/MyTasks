@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyTasks.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,19 @@ namespace MyTasks
 
             SetCurrentTime();
 
+            AddHandlers();
+
+        }
+
+        private void AddHandlers()
+        {
+            CreateTaskButton.Click += Create_New_Task;
+        }
+
+        private void Create_New_Task(object sender, RoutedEventArgs e)
+        {
+            CreateTaskWindow createTaskWindow = new CreateTaskWindow();
+            createTaskWindow.Show();
         }
 
         private void SetCurrentTime()

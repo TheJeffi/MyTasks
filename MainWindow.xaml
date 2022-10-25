@@ -30,7 +30,7 @@
 
         <TextBlock x:Name="TimestampBlock" Style="{DynamicResource TimestampBlock}"></TextBlock>
 
-        <Button Grid.Column="1" Style="{DynamicResource ButtonStyle}" Content="Создать задачу" />
-        <Button Grid.Column="2" Style="{DynamicResource ButtonStyle}" Content="Изменить задачу" />
+        <Button x:Name="CreateTaskButton" Grid.Column="1" Style="{DynamicResource ButtonStyle}" Content="Создать задачу" />
+        <Button x:Name="ChangeTaskButton" Grid.Column="2" Style="{DynamicResource ButtonStyle}" Content="Изменить задачу" />
     </Grid>
 </Window>

@@ -7,4 +7,22 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Resources\Source\Cвернуть активный.png" />
+    <None Remove="Resources\Source\Cвернуть неактивный.png" />
+    <None Remove="Resources\Source\Закрыть активный.png" />
+    <None Remove="Resources\Source\Закрыть неактивный.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Source\Cвернуть активный.png" />
+    <Resource Include="Resources\Source\Cвернуть неактивный.png" />
+    <Resource Include="Resources\Source\Закрыть активный.png" />
+    <Resource Include="Resources\Source\Закрыть неактивный.png" />
+  </ItemGroup>
+
 </Project>

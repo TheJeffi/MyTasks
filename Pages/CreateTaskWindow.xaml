@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="CreateTaskWindow" Height="340" Width="240"
         Style="{DynamicResource WindowStyle}" WindowStartupLocation="CenterScreen"
-        WindowStyle="ToolWindow"
+        WindowStyle="None"
         ResizeMode="CanMinimize" WindowState="Normal">
 
     <Window.Resources>
@@ -17,39 +17,96 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="54*"/>
-            <RowDefinition Height="54*"></RowDefinition>
-            <RowDefinition Height="54*"></RowDefinition>
-            <RowDefinition Height="54*"></RowDefinition>
-            <RowDefinition Height="54*"></RowDefinition>
-            <RowDefinition Height="54*"></RowDefinition>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="53" />
+            <RowDefinition Height="53"/>
+            <RowDefinition Height="53" />
+            <RowDefinition Height="53" />
+            <RowDefinition Height="53" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-
-        <TextBlock TextAlignment="Center" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center">Создать задачу</TextBlock>
-
-        <StackPanel Margin="5" Grid.Row="1">
-            <TextBlock>Название задачи</TextBlock>
-            <TextBox x:Name="TaskName" />
-        </StackPanel>
-
+        <Grid x:Name="ToolBar"  Grid.Row="0" Background="Transparent" MouseDown="ToolBar_MouseDown">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Image x:Name="MinButton" Height="20" Width="20" MouseDown="MinButton_MouseDown">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="/Resources/Source/Cвернуть неактивный.png" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsMouseOver, ElementName=MinButton}" Value="true">
+                                    <Setter Property="Source" Value="/Resources/Source/Cвернуть активный.png" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                    <Image.Effect>
+                        <BlurEffect Radius="1"/>
+                    </Image.Effect>
+                </Image>
+                <Image x:Name="CloseButton" Height="20" Width="20" MouseDown="CloseButton_MouseDown">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="/Resources/Source/Закрыть неактивный.png" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsMouseOver, ElementName=CloseButton}" Value="true">
+                                    <Setter Property="Source" Value="/Resources/Source/Закрыть активный.png" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                    <Image.Effect>
+                        <BlurEffect Radius="1"/>
+                    </Image.Effect>
+                </Image>
+            </StackPanel>
+        </Grid>
+        <TextBlock Grid.Row="1" TextAlignment="Center" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center">Создать задачу</TextBlock>
         <StackPanel Margin="5" Grid.Row="2">
-            <TextBlock>Дата создания задачи</TextBlock>
-            <DatePicker x:Name="TaskCreateDate" />
+            <TextBlock>Название задачи</TextBlock>
+            <TextBox x:Name="TaskName" MaxLength="50"/>
         </StackPanel>
 
         <StackPanel Margin="5" Grid.Row="3">
-            <TextBlock>Дата завершения задачи</TextBlock>
-            <DatePicker x:Name="TaskEndDate" />
+            <TextBlock>Дата создания задачи</TextBlock>
+            <DatePicker x:Name="TaskCreateDate" FirstDayOfWeek="Monday" SelectedDateFormat="Long" DisplayDateStart="2010-01-01" DisplayDateEnd="2030-12-31">
+                <DatePicker.Resources>
+                    <Style TargetType="DatePickerTextBox">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <TextBox Text="{Binding Path=SelectedDate, RelativeSource={RelativeSource AncestorType=DatePicker}, StringFormat={}{0:dd.MM.yyyy hh:mm:ss}}" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </DatePicker.Resources>
+            </DatePicker>
         </StackPanel>
 
         <StackPanel Margin="5" Grid.Row="4">
-            <TextBlock>Цель задачи</TextBlock>
-            <TextBox x:Name="TaskPurpose"/>
+            <TextBlock>Дата завершения задачи</TextBlock>
+            <DatePicker Name="TaskEndDate" FirstDayOfWeek="Monday" SelectedDateFormat="Long" DisplayDateStart="2010-01-01" DisplayDateEnd="2030-12-31">
+                <DatePicker.Resources>
+                    <Style TargetType="DatePickerTextBox">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <TextBox Text="{Binding Path=SelectedDate, RelativeSource={RelativeSource AncestorType=DatePicker}, StringFormat={}{0:dd.MM.yyyy hh:mm:ss}}" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </DatePicker.Resources>
+            </DatePicker>
         </StackPanel>
 
-        <Button x:Name="CreateTaskButton" Style="{DynamicResource ButtonStyle}" />
+        <StackPanel Margin="5" Grid.Row="5">
+            <TextBlock>Цель задачи</TextBlock>
+            <TextBox x:Name="TaskPurpose" MaxLength="150"/>
+        </StackPanel>
+
+        <Button x:Name="CreateTaskButton" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{DynamicResource ButtonStyle}" Content="Создать задачу"/>
     </Grid>
 </Window>
